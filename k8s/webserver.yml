@@ -1,0 +1,24 @@
+apiVersion: apps/v1 # apiVersion - 1st line of every Kubernetes configuration file
+kind: Deployment # kind - it tells the Kubernetes, what type of resource we are creating here
+# each kind of file have a metadata, spec and status(run time k8s add the status)
+metadata: 
+    name: mywebserver
+    labels:
+        app: httpd
+# spec: is tells, what this Deployment is about..
+spec:
+    replicas: 2 # deploy 2 replicas of PODs, replica is always deal with PODs
+    selectors:
+            matchLabels:
+                    app: httpd
+            # PODs are define through template
+            template:
+                metadata:
+                    labels:
+                        app: httpd
+                spec:
+                    containers:
+                        - name: myhttpd
+                          image: httpd
+                          ports:
+                            - containerPort: 80 
