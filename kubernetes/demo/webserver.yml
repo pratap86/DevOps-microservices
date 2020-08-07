@@ -8,7 +8,7 @@ metadata:
 # spec: is tells, what this Deployment is about..
 spec:
     replicas: 2 # deploy 2 replicas of PODs, replica is always deal with PODs
-    selectors:
+    selector:
             matchLabels:
                     app: httpd
             # PODs are define through template
